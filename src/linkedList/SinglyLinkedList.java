@@ -25,6 +25,8 @@ public class SinglyLinkedList {
         singlyLinkedList.deleteLast();
         singlyLinkedList.deleteAtPosition(5);
         singlyLinkedList.printList();
+        System.out.println("6 present in list: " + singlyLinkedList.search(6));
+        System.out.println("10 present in list: " + singlyLinkedList.search(10));
     }
 
     public void printList() {
@@ -116,6 +118,16 @@ public class SinglyLinkedList {
             Node right = left.next.next;
             left.next = right;
         }
+    }
+
+    public boolean search(Object data) {
+        Node current = head;
+        while (current != null) {
+            if (data == current.data)
+                return true;
+            current = current.next;
+        }
+        return false;
     }
 
 }
