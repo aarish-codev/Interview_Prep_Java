@@ -27,6 +27,10 @@ public class SinglyLinkedList {
         singlyLinkedList.printList();
         System.out.println("6 present in list: " + singlyLinkedList.search(6));
         System.out.println("10 present in list: " + singlyLinkedList.search(10));
+        singlyLinkedList.reverse();
+        singlyLinkedList.printList();
+        System.out.println("Middle node value is: " + singlyLinkedList.findMiddleNode());
+        System.out.println("2nd value from end is: " + singlyLinkedList.findNthNodeFromEnd(2));
     }
 
     public void printList() {
@@ -128,6 +132,51 @@ public class SinglyLinkedList {
             current = current.next;
         }
         return false;
+    }
+
+    public void reverse() {
+        if (head == null)
+            throw new RuntimeException("No data present in list");
+        Node current = head;
+        Node prev = null, ahead;
+        while (current != null) {
+            ahead = current.next;
+            current.next = prev;
+            prev = current;
+            current = ahead;
+        }
+        head = prev;
+    }
+
+    public Object findMiddleNode() {
+        if (head == null)
+            throw new RuntimeException("No data present in list");
+        if (head.next == null)
+            return head.data;
+        Node slow = head;
+        Node fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+        }
+        return slow.data;
+
+    }
+
+    public Object findNthNodeFromEnd(int n) {
+        Node current = head;
+        Node refPtr = head;
+        int index = 0;
+        while (index < n) {
+            refPtr = refPtr.next;
+            index++;
+        }
+        while (refPtr != null) {
+            current = current.next;
+            refPtr = refPtr.next;
+        }
+        return current.data;
     }
 
 }
