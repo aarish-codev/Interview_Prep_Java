@@ -2,6 +2,7 @@ package linkedList;
 
 public class Node<T> {
     Node<T> next;
+    Node<T> previous;
 
     T data;
 
