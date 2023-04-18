@@ -1,10 +1,10 @@
 package linkedList;
 
 public class Node<T> {
-    Node<T> next;
-    Node<T> previous;
+    public Node<T> next;
+    public Node<T> previous;
 
-    T data;
+    public T data;
 
     public Node(T data) {
         this.data = data;
