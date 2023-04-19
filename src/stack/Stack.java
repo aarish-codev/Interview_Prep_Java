@@ -4,9 +4,9 @@ import linkedList.Node;
 
 import java.util.NoSuchElementException;
 
-public class Stack {
+public class Stack<T> {
 
-    Node<Integer> top;
+    Node<T> top;
     int length;
 
     public static void main(String[] args) {
@@ -39,16 +39,20 @@ public class Stack {
         System.out.println("Length: " + length);
     }
 
-    public Object pop() {
+    public T pop() {
         Object result = top.data;
         top = top.next;
         length--;
-        return result;
+        return (T) result;
     }
 
     public Object peek() {
         if (top == null)
             throw new NoSuchElementException("Stack is empty");
         return top.data;
+    }
+
+    public boolean isEmpty() {
+        return top == null;
     }
 }
